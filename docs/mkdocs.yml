@@ -1,0 +1,50 @@
+site_name: JupyterHub-Deployment-ENGR101-2019Q1
+
+# Configuration
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  language: 'en'
+  palette:
+    primary: 'deep orange'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo:
+    icon: 'build'
+
+# Markdown Extensions
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc
+  - pymdownx.smartsymbols
+repo_url: https://github.com/ProfessorKazarinoff/jupyterhub-engr101
+extra_css: 
+    - static/css/toc.css
+copyright: 'Copyright &copy; 2019 Peter D. Kazarinoff'
+
+nav:
+  - Home: index.md
+  - What is JupyterHub?: what_is_jupyterhub.md
+  - Set Up and Tools: setup_and_tools.md
+  - SSH Keys: ssh_keys.md
+  - Server Setup: doserver.md
+  - Install JupyterHub: install_jupyterhub.md
+  - DNS Routing: DNS.md
+  - SSL Certificates: ssl.md
+  - Cookie Secret and Proxy Auth Token: cookie_secret_proxy_auth_token.md
+  - Install Nginx: nginx_install.md
+  - Nginx Configuration: nginx_config.md
+  - JupyterHub Configuration: jupyterhub_config.md
+  - System Service: systemd.md
+  - GitHub OAuth: github_oauth.md
+  - Google OAuth: google_oauth.md
+  - JupyterLab Default Interface: jupyterlab_default.md
+  - Custom Login Page: login_page.md
+  - Install Draw.IO extension: draw_dot_IO_extension.md
+  - GitHub Extension: github_extension.md
+  - nbGitpuller Plugin: nbgitpuller_plugin.md
+  - Defaut URL for nbGitpuller: nbgitpuller_defaut_url.md
+  - Usefull Commands: useful_commands.md

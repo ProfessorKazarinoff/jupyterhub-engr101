@@ -1,0 +1,10 @@
+# What is JupyterHub?
+
+JupyterHub is a server-hosted distributed Jupyter notebook deplpyment. JupyterHub allows users to log into a server and write Python code within a web browswer without any software installation on their local computer. Anywhere you have an internet connection, you can bring up a JupyterHub webpage and write/run Python code. The Jupyter notebook and JupyterLab interfaces that JupyterHub provides is the same Jupyter interface you run locally. Because JupyterHub runs in a web browser, it even works on tablets and phones.
+
+## Why JupyterHub?
+
+Why **Jupyter Hub**? I am teaching an introductory engineering course this winter. In previous quarters, our college has taught MATLAB for three of the labs in this course. But this winter, I want to try teaching **Python** and cover the same concepts and learning outcomes.
+
+If we use **Python** in the class this winter, I would like to spend the class time coding and solving problems. I don't want to spend time during class downloading Python, creating virtual environments, troubleshooting installs, dealing with system vs. non-system versions of Python, installing packages, dealing with folder structure, explaining the difference between conda and pip, teaching command-line commands, going over Python on Windows compared to Python on MacOSX... The solution is to use JupyterHub.
+
