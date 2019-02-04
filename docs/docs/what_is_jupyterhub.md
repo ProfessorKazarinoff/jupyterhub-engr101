@@ -8,3 +8,10 @@ Why **Jupyter Hub**? I am teaching an introductory engineering course this winte
 
 If we use **Python** in the class this winter, I would like to spend the class time coding and solving problems. I don't want to spend time during class downloading Python, creating virtual environments, troubleshooting installs, dealing with system vs. non-system versions of Python, installing packages, dealing with folder structure, explaining the difference between conda and pip, teaching command-line commands, going over Python on Windows compared to Python on MacOSX... The solution is to use JupyterHub.
 
+## Summary
+
+JupyterHub is a way to run Jupyter notebooks on a remote server. Students will be able to log on to the JupyterHub server then write and run Python code without installing any software.
+
+## Next Steps
+
+Next, we will review what tools we need installed on our local comptuer to deploy JupterHub. We'll also review the standard locations for JupyterHub configuration and runtime files.
