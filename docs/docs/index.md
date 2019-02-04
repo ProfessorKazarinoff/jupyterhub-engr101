@@ -16,7 +16,7 @@ Click the menu items on the left to view the deployment steps.
 
 Or start [Here](what_is_jupyterhub.md) and click the arrows at the bottom of each page.
 
-[![Next Setup Arrow](images/next_setup.png)](setup.md)
+[![Next Setup Arrow](images/next_what_is_jupyterhub_arrow.png)](what_is_jupyterhub.md)
 
 <br>
 

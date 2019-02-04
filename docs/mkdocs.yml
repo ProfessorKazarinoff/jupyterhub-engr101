@@ -1,6 +1,5 @@
 site_name: JupyterHub-Deployment-ENGR101-2019Q1
 
-# Configuration
 theme:
   name: 'material'
   custom_dir: 'theme'

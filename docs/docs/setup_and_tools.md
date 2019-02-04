@@ -28,11 +28,11 @@ It is helpful to have an SFTP client to move large files back and forth between 
 
 Locally, I use the [Anaconda distribution of Python](https://www.anaconda.com/download/) and the [Anaconda Prompt](https://conda.io/docs/) to create virtual environments and run Python code.
 
-!Anaconda Download Page](images/anaconda_download_page.png)
+![Anaconda Download Page](images/anaconda_download_page.png)
 
 I use a couple of different Python code editors. My two favorites are Visual Studio Code and PyCharm. You can download and install Visual Studio Code [here](https://code.visualstudio.com/download). PyCharm has a community edition which is free and a professional version which requires a license. For this JupyterHub deployment I just use Visual Studio Code.
 
-![Visual Studio Code Download Page](images/vscode_downlod_page.png)
+![Visual Studio Code Download Page](images/vscode_download_page.png)
 
 This JupyterHub deployment runs on a [Digital Ocean](https://www.digitalocean.com/) virtual private server. Local development and testing was completed on a Windows 10 laptop and desktop. 
 
