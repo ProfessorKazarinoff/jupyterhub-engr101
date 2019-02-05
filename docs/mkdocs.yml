@@ -29,7 +29,7 @@ nav:
   - What is JupyterHub?: what_is_jupyterhub.md
   - Set Up and Tools: setup_and_tools.md
   - SSH Keys: ssh_keys.md
-  - Server Setup: doserver.md
+  - Server Setup: server_setup.md
   - Install JupyterHub: install_jupyterhub.md
   - DNS Routing: DNS.md
   - SSL Certificates: ssl.md

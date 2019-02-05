@@ -6,9 +6,9 @@ SSH keys allow us to log into the cloud server which will run JupyterHub. SSH ke
 
 ## Why SSH keys, PuTTYgen and why do this first?
 
-When I set up the server the first time, one of the initial server setup steps was to add SSH keys (so the server has the SSH key when it initialized). 
+When I set up one of my first JupyterHub servers, one of the initial server setup steps was to add SSH keys (so the server has the SSH key when it is initialized). 
 
-I tried to create and save the SSH keys to the Digital Ocean (the cloud server provider) dashboard so the SSH keys would be on the server when the server first started. But I goofed up somehow and the server started without any SSH keys. 
+On that first JupyterHub server, I tried to create and save the SSH keys to the Digital Ocean (the cloud server provider) dashboard so the SSH keys would be on the server when the server first started. But I goofed up somehow and the server started without any SSH keys. 
 
 **It was a BIG PAIN to add SSH keys after the server started for the first time.** 
 
@@ -42,7 +42,7 @@ Use the following parameters
  * Type of key to generate: RSA
  * Number of bits in generated key: 2048
 
-Then click [generate]
+Then click [Generate]
 
 ![PuTTYgen generate](images/puttygen_generate.png)
 
@@ -58,13 +58,15 @@ In the [Actions] section click [Save public key] and click [Save private key]
 
 ![PuTTYgen save public and private keys](images/puttygen_save_public_private_key.png)
 
-Make sure to save both the public and the private keys. Save these keys to an accessible folder. The first time I generated SSH keys, I saved the keys in the default location and couldn't access them later. The second time I created SSH keys, I created a folder in the Documents folder called ssh-keys and saved the public and private keys in ```Documents\ssh-keys```. I saved the public key with the name: ```public_key_jupyterhub_ENGR101_2019Q1.txt```. The Digital Ocean documentation recommends a ```.txt``` file extension for the public key (so you can open it and copy the contents). The private key should have a .ppk file extension.
+Make sure to save both the public and the private key. Save these keys to an accessible folder. The first time I generated SSH keys, I saved the keys in the default location and couldn't access them later. The second time I created SSH keys, I created a folder in the Documents folder called ssh-keys and saved the public and private keys in ```Documents\ssh-keys```. I saved the public key with the name: ```public_key_jupyterhub_ENGR101_2019Q1.txt```. The Digital Ocean documentation recommends a ```.txt``` file extension for the public key (so you can open it and copy the contents). The private key should have a .ppk file extension.
 
 ![PuTTYgen save public key name](images/puttygen_public_key_save_name.png)
 
 ## Copy the public key to clipboard
 
-Before closing PuTTYgen, make sure to copy the contents of the Public Key to the clipboard. We'll need the public key contents when we create the server. Copy all of the contents of the public SSH key including the rsa line. 
+Before closing PuTTYgen, make sure to copy the contents of the Public Key to the clipboard. We'll need the public key contents when we create the server. Copy all of the contents of the public SSH key including the ```ssh-rsa``` line. 
+
+![PuTTYgen Copy RSA key to Clipboard](images/puttygen_copy_to_clipboard.png)
 
 ## Summary
 
