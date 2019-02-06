@@ -10,9 +10,9 @@ When I set up one of my first JupyterHub servers, one of the initial server setu
 
 On that first JupyterHub server, I tried to create and save the SSH keys to the Digital Ocean (the cloud server provider) dashboard so the SSH keys would be on the server when the server first started. But I goofed up somehow; and the server started without any SSH keys. 
 
-**It was a BIG PAIN to add SSH keys after the server started for the first time.** 
+**It is a BIG PAIN to add SSH keys after the server starts for the first time.**
 
-I ended up copying the public SSH key into pastebin.com, logging onto the server with the Digital Ocean console and used ```wget``` to bring a textfile of the SSH key from pastebin.com onto the server and then used ```mv``` to copy the key name into the right location. Ah!
+I ended up copying the public SSH key into pastebin.com, logging onto the server with the Digital Ocean console and used ```wget``` to bring a text file of the SSH key from pastebin.com onto the server and then used ```mv``` to copy the key name into the right location. Ah!
 
 I'm pretty sure that pasting a public SSH key into pastebin.com is not the best way to set up a secure server. So to make sure that doesn't happen again, we are going to generate the SSH keys first and set up the server second. 
 

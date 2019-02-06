@@ -12,6 +12,7 @@ theme:
     code: 'Roboto Mono'
   logo:
     icon: 'build'
+  favicon: 'assets/images/baseline-build-24px.ico'
 
 # Markdown Extensions
 markdown_extensions:
@@ -31,8 +32,8 @@ nav:
   - SSH Keys: ssh_keys.md
   - Server Setup: server_setup.md
   - Install JupyterHub: install_jupyterhub.md
-  - DNS Routing: DNS.md
-  - SSL Certificates: ssl.md
+  - DNS Routing: dns_routing.md
+  - SSL Certificates: ssl_cirtificates.md
   - Cookie Secret and Proxy Auth Token: cookie_secret_proxy_auth_token.md
   - Install Nginx: nginx_install.md
   - Nginx Configuration: nginx_config.md

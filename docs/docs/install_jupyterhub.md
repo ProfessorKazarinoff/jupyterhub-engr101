@@ -172,6 +172,8 @@ To allow communication on port 8000 and start JupyterHub, type:
 
 ```text
 $(jupyterhub) sudo ufw allow 8000
+# make sure the (jupyterhub) conda env is activated
+
 $(jupyterhub) jupyterhub --no-ssl
 ```
 
@@ -196,6 +198,22 @@ You should see the typical notebook file browser with all the files you can see 
     <strong>Warning!</strong> You should not run JupyterHub without SSL encryption on a public network.
 
 **Quick! Log out and shut down JupyterHub**. (does quick really matter in internet security?) The site is running without any ssl security over regular HTTP not HTTPS. Key in [Ctrl] + [c] to stop JupyterHub.
+
+After you have confirmed that JupyterHub works, close off Port 8000 on the server by keying in the following command.
+
+```text
+$(jupyterhub) sudo ufw deny 8000
+$(jupyterhub) sudo ufw status
+
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+8000                       DENY        Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+8000 (v6)                  DENY        Anywhere (v6)
+```
 
 ## Summary
 
