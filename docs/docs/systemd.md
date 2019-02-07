@@ -87,6 +87,6 @@ In this section, we got JupyterHub running as a system service. We created a ```
 
 ## Next Steps
 
-The next step is to have JupyterHub accept GitHub usernames and passwords. This will allow students with Github accounts to log into JupyterHub and means we don't have to deal with creating new users and sending students usernames and passwords.
+The next step is to add users to our server and see if we can log in as a different user than our non-root sudo user, ```peter```.
 
 <br>
