@@ -46,9 +46,58 @@ Try writing a bit of Python code and running it. Imports for ```numpy``` and ```
 
 ![Sample Notebook Running with Code](images/nb_sample_code.png)
 
+After messing around with a Jupyter notebook and making sure that imports and plots work correctly, shut down your notebook server. This action does not shut down the Digital Ocean server running JupyterHub, it just shuts down the server (running on the Digital Ocean server) that serves Jupyter notebooks for the user you logged in as.
+
+Click the [Control Pannel] button in the upper right-hand size of the Jupyter notebook.
+
+![Notebook control pannel button](images/nb_control_pannel_button.png)
+
+This brings you to a web browser screen that shows buttons for [Stop my Server] and [Start my Server] and [Logout]. Click the [Stop my Server] button.
+
+![Stop my server button](images/nb_stop_my_server_button.png)
+
+Finally, logout by clicking the [Log Out] button in the upper right. This will bring you back to the JupyterHub Login screen.
+
+![JupyterHub PAM Login](images/jupyterhub_pam_spawner_login.png)
+
+The reason we want to log out is that we are going to create a new user and want to login as that user. If you don't log out, JupyterHub my start you as the user ```peter```.
+
 ## Create a new user
 
+If you have a small class or a small lab. Creating users one at a time at the command line and assigning them passwords might be all you need to do to get JupyterHub working for your small group. Next, we will create a new user on the server and log in as the new user.
+
+On the server, create the new user with the ```adduser``` command. I called my new user ```gabby```.
+
+```text
+$ adduser gabby
+```
+
+Set a new password and confirm:
+
+```text
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+```
+
+The user details can be skipped by pressing [Enter]. Then [Y] to complete the new user setup.
+
+```text
+Changing the user information for username
+Enter the new value, or press ENTER for the default
+    Full Name []:
+    Room Number []:
+    Work Phone []:
+    Home Phone []:
+    Other []:
+Is the information correct? [Y/n]
+```
+
 ## Log to JupyterHub in as the new user
+
+Now browse to the domian name we set up before and log into JupyterHub as the new user. Note the new user ```gabby``` doesn't have any files in the Jupyter notebook file browswer. This is because the home directory of the user ```gabby``` is empty.
+
+![]()
 
 ## Summary
 
