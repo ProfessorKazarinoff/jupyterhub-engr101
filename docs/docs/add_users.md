@@ -32,7 +32,7 @@ $ sudo systemctl status jupyterhub
 
 Point a web browser at our domain and log into JupyterHub as our non-root sudo user ```peter```. Use the password we set for ```peter``` on the server.
 
-The JupyterHub login screen looks something should look like:
+The JupyterHub login screen is shown below:
 
 ![JupyterHub PAM Login](images/jupyterhub_pam_spawner_login.png)
 
@@ -64,7 +64,9 @@ The reason we want to log out is that we are going to create a new user and want
 
 ## Create a new user
 
-If you have a small class or a small lab, creating users one at a time at the command line and assigning them passwords might be all you need to do to get JupyterHub working for your small group. Next, we will create a new user on the server and log in as the new user. For a small group, you could repeat this process a couple times, and send out user names and passwords to people in your group.
+If you have a small class or a small lab, creating users one at a time at the command line and assigning them passwords might be all you need to do to get JupyterHub working for your small group.
+
+Next, we will create a new user on the server and log in as the new user. For a small group, you could repeat this process a couple times, and send out usernames and passwords to people in your group.
 
 On the server, create the new user with the ```adduser``` command. I called my new user ```gabby```.
 
@@ -101,7 +103,7 @@ Now we need to add the new user to the ```jupyterhub_config.py``` file. So far t
 $ nano /etc/jupyterhub/jupyterhub_config.py
 ```
 
-Add  the user ```gabby``` to ```c.Authenticator.whitelist = { }```
+Add  the user ```'gabby'``` to ```c.Authenticator.whitelist = { }```
 
 ```text
 # /etc/jupyterhub/jupyterhub_config.py
@@ -126,7 +128,7 @@ $ sudo systemctl status jupyterhub
 
 ## Log to JupyterHub in as the new user
 
-Now browse to the domain name we set up before and log into JupyterHub as the new user. Note the new user ```gabby``` doesn't have any files in their Jupyter notebook file browser. This is because the home directory of the user ```gabby``` is empty.
+Now browse to the domain name we set up before and log into JupyterHub as the new user ```gabby```. Note the new user ```gabby``` doesn't have any files in their Jupyter notebook file browser. This is because the home directory of the user ```gabby``` is empty.
 
 ![Gabby Sign in](images/jh_sign_in_gabby.png)
 
