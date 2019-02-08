@@ -367,3 +367,4 @@ jupyterhub-engr101-docs/site/
 ## Config files
 
 /etc/jupyterhub/config.json
+/etc/jupyterhub/google_oauth_credentials.json

@@ -25,6 +25,26 @@ To create a set of Google OAuth credentials we need to input:
 
 ![Google js origins and callback url](images/google_oauth_javascript_origins_redirect_uri.png)
 
+After clicking [Create] a problem surfaced. The Google OAuth dashboard noted that:
+
+ > Invalid Origin: domain must be added to the authorized domains list before submitting
+
+![Google OAuth Dashboard Resistrictions](images/google_oauth_restrictions.png)
+
+So click the [authorized domains list] link and enter the domain name for the JupyterHub server in the text box under [Authorized domains].
+
+![Google OAuth add scope](images/google_oauth_add_scope.png)
+
+Then click [Submit for verification] and [Save]. For some reason the authorize domains submit for verification step and save step took a couple tries and more than a couple minutes. I don't know if Google is going a DNS lookup or what kind of verification steps they do - either way it took some time for the domain to be "verified".
+
+![Google OAuth submit for verification](images/google_oauth_submit_for_verification.png)
+
+Once the domain is verified, go back to the [Credentials] --> [Create Credentials] --> [OAuth client ID] screen and try entering in the [Authorized JavaScript origins] and [Authorized redirect URIs] again.
+
+![Google OAuth re_enter domain](images/google_oauth_re_enter_domain.png)
+
+The scary red [Invalid Origin] should be absent as long as the domain has been verified.
+
 After creating a new set of Google OAuth credentials, note the:
 
  * client ID
@@ -34,9 +54,84 @@ After creating a new set of Google OAuth credentials, note the:
  
  The client ID and client secret strings will be included in our revised JupyterHub configuration.
 
+For this JupyterHub Deployment, I also downloaded the json file that contains the client ID and client secret. You can access the json file containing the client ID and client secret by clicking the [Credentials] tab and find the credential you just created. On the right hand side is a download icon. Clicking this icon downloads the json file.
+
+![Google OAuth Credentials Tab](images/google_oauth_credentials_tab.png)
+
+![Google OAuth Credentials Tab](images/google_oauth_credentials_tab_download_json.png)
+
+Download the json file. It has a structure that looks kind of like this:
+
+```text
+{"web":
+    {"client_id":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
+    "project_id":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+    "token_uri":"https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "redirect_uris":["https:XXXXXXXXXXXXXXX/hub/oauth_callback"],
+    "javascript_origins":["https://eXXXXXXXXXXXX.org"]
+    }
+ }
+```
+
+On a local computer, rename the json file to ```google_oauth_credentials.json```. Then we can use Python and the ```json``` module to pull out the ```"client_id"``` and ```"client_secret"```. Make sure the json file is in the same directory on your local computer where the code is run. Try the following Python code on your local computer:
+
+```python
+with open('google_oauth_credentials.json') as f:
+    google_oauth = json.load(f)
+
+print(google_oauth['web']['client_id'])
+print(google_oauth['web']['client_secret']
+```
+
+The output will be the ```'client_id'``` and ```'client_secret'``` from the json file.
+
+Now we need to move the ```google_oauth_credentials.json``` to the sever and **MAKE SURE TO ADD THE FILE TO .gitignore** we **DON'T WANT CREDENTIALS STORED ON GITHUB**.
+
+In ```.gitignore``` on my local machine, I added the following lines at the end. Note that locally this file is saved at ```projectroot/etc/jupyterhub/google_oauth_credentials.json```
+
+```text
+# .gitignore
+
+...
+
+## Config files
+
+/etc/jupyterhub/config.json
+/etc/jupyterhub/google_oauth_credentials.json
+
+...
+
+```
+
+Now move the json file over to the server and save it in the ```/etc/jupyterhub/``` directory. I used FileZilla for this instead of copy-paste into PuTTY and the nano code editor.
+
+Open FileZilla and select [File] --> [Sites]. Enter in the server's IP address and select the SSH key used to log into the server.
+![]()
+
+Move both file browsers to ```/etc/jupyterhub```. On the local computer, the json file is present. On the server, only the jupyterhub config file is present.
+
+![]()
+
+Drag the json file over to the server side of the window.
+
+![]()
+
+Now you can close the FileZilla window.
+
+After the json file is saved on the server, the contents of ```/etc/jupyterhub``` should be:
+
+```text
+/etc/jupyterhub/
+├── google_oauth_credentials.json
+└── jupyterhub_config.py
+```
+
 ## Modify jupyterhub_config.py
 
-Once we get our Google OAuth credentials, we need to edit ```jupyterhub_conf.py``` again. Note your Google OAuth credentials need to replace ```'XXXXXXXXXXXXXXXXX'```. 
+Once we get our Google OAuth credentials, we need to edit ```jupyterhub_conf.py``` again. Note your Google OAuth credentials are replaced by the credentials from the ```google_oauth_credentials.json``` file. .
 
 ```python
 # /etc/jupyterhub/jupyterhub_conf.py
@@ -58,14 +153,16 @@ c.ConfigurableHTTPProxy.auth_token = '/srv/jupyterhub/proxy_auth_token'
 
 # Google OAuth Login
 with open('google_oauth_credentials.json') as f:
-    google_oauth = json.load(f)  
-c.LocalGoogleOAuthenticator.oauth_callback_url = 'https://engr101lab.org/hub/oauth_callback'
+    google_oauth = json.load(f)
+
 c.LocalGoogleOAuthenticator.client_id = google_oauth['web']['client_id']
 c.LocalGoogleOAuthenticator.client_secret = google_oauth['web']['client_secret']
+
+c.LocalGoogleOAuthenticator.oauth_callback_url = 'https://engr101lab.org/hub/oauth_callback' # replace with your domain
 c.LocalGoogleOAuthenticator.create_system_users = True
 c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '""', '--disabled-password', '--force-badname']
-c.LocalGoogleOAuthenticator.hosted_domain = 'pcc.edu'   #replace with collegedomain.edj
-c.LocalGoogleOAuthenticator.login_service = 'Portland Community College'  #replace with 'College Name'
+c.LocalGoogleOAuthenticator.hosted_domain = 'pcc.edu'   # replace with collegedomain.edu
+c.LocalGoogleOAuthenticator.login_service = 'Portland Community College'  # replace with 'College Name'
 
 ``` 
 
@@ -94,7 +191,7 @@ $ sudo systemctl status jupyterhub
 
 The login window should now look something like:
 
-![Sign in with Google](images/sign_in_with_google.PNG)
+![Sign in with Google](images/sign_in_with_google.png)
 
 We can log in with our Google user name and password (college username and password). 
 
