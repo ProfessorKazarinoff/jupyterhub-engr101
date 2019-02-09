@@ -77,7 +77,7 @@ All the changes I made to the login template were inside the "login" block (```{
 {% endblock login %}
 ```
 
-You can find my complete ```login.html``` file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr101/blob/master/etc/jupyterhub/templates/login.html). 
+You can find my complete ```login.html``` file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr101/tree/master/etc/jupyterhub/templates). 
 
 I used the FileZilla SFTP Windows App to move the ```login.html``` file from my local computer to the server. To use FileZilla, Select [File] --> [Site Manager]. Select [SFTP], add the server IP address, username, and select [Log in Type] --> [Key File]. FileZilla settings are below:
 
@@ -138,7 +138,7 @@ The solution I finally got to work was to modify the ```style.min.css``` file it
 └── style.min.css.map
 ```
 
-Modify the ```style.min.css``` file to include all the custom css styling desired (find my complete css file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr114/blob/master/style.min.css)) 
+Modify the ```style.min.css``` file to include all the custom css styling desired (find my complete css file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr101/tree/master/opt/miniconda3/envs/jupyterhub/share/jupyterhub/static/css) 
 
 I used FileZilla again to move over the file. ```style.min.css``` is a pretty big file and copying and pasting into PuTTY would probably lead to a lot of errors.
 
