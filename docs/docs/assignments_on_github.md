@@ -6,11 +6,13 @@ Now we'll build a set of pre-constructed assignments and notes for each JupyterH
 
 ## Create a repo of assignments on GitHub.com
 
-On GitHub.com, create a new repo with the notes and assignments for the quarter.
+Log onto to GitHub.com, and create a new repo with the notes and assignments for the quarter.
 
-![new repo]()
+![new repo](images/gh_new_repo.png)
 
-![repo details]()
+![repo details](images/gh_new_repo_details.png)
+
+Make sure to select [Add .gitignore **Python**]  and select a license.
 
 ## Pull the repo down from GitHub.com to the local computer
 
@@ -29,9 +31,13 @@ $ git pull origin master
 
 On the local computer, not the server, build the assignment and notes for the quarter. I did this using Jupyter notebooks.
 
+![notebook of notes for the quarter](images/nb_notes_intro_to_jupyter.png)
+
+Save all of the changes locally. Add any files that you don't want students to see to .gitignore.
+
 ## Push the completed assignments and notes up to GiHub
 
-Then add, commit and push the changes up to GitHub.
+Finally, add, commit, and push the changes up to GitHub.
 
 ```text
 # local computer
@@ -42,4 +48,10 @@ $ git push origin master
 
 ## Summary
 
+In this section, we built a set of notes and assignments for the quarter on GitHub. First a new repo was created on GitHub.com. A `````.gitignore````` file corresponding to Python and a license were added to the repo when the repo was created. Next we pulled to repo down to our local computer and built the assignments and notes. Finally we pushed the changes up to Github.
+
 ## Next Steps
+
+Next, we'll use a JupyterHub extension called **nbgitpuller** which copies the notes and assignments we just saved to GitHub into each students home folder when they log into JupyterHub.
+
+<br>

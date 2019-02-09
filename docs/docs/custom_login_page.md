@@ -1,6 +1,6 @@
-aa# Custom Login Page
+# Custom Login Page
 
-The JupyterHub login page looks like this:
+Now that we completed the Google OAuth configuration, our JupyterHub login page looks like this:
 
 ![JupyerHub login with Google page](images/login_with_google.png)
 
@@ -8,15 +8,17 @@ But our college login page looks like this:
 
 ![MyPCC login page](images/college_login_page.png)
 
-For users to feel comfortable with logging into the JupyterHub server, we'll make the JupyterHub login page look more like our college login page.
+For users to feel comfortable logging into our JupyterHub server, we'll make our JupyterHub login page look more like the college login page.
 
 [TOC]
 
 ## Create a templates directory and populate it with Jinja templates
 
-Customizing the login page was a time consuming and fussy task. It involved a lot of messing around with css and html plus some knowledge about how jinja templates work.
+Customizing the login page was a time consuming and fussy task. It involved a lot of messing around with css and html, plus some knowledge about how **jinja** templates work.
 
-First, a set of custom **jinja** templates need to be created. When JupyterHub runs, there is a directory of jinja templates that build the html users see when they browse to the login page. The jinga templates that build the login page are buried deep in the JupyterHub package code. For my JupyterHub installation on the server, I found the jinja template files in the ```/opt/miniconda3/envs/jupyterhub/share/jupyterhub/templates/``` directory. If you aren't using a virtual environment, the JupyterHub package directory name will likely be different:
+First, a set of custom jinja templates need to be created. When JupyterHub runs, there is a directory of jinja templates that build the html users see when they browse to the login page. The jinga templates that build the login page are buried deep in the JupyterHub package code. For my JupyterHub installation on the server, I found the jinja template files in the ```/opt/miniconda3/envs/jupyterhub/share/jupyterhub/templates/``` directory. If you aren't using a virtual environment, the JupyterHub package directory name will likely be different. 
+
+The contents of the directory that contains the jinja templates is below.
 
 ```text
 /opt/anaconda3/envs/pkgs/jupyterhub/share/jupyterhub/templates/
@@ -79,7 +81,7 @@ All the changes I made to the login template were inside the "login" block (```{
 
 You can find my complete ```login.html``` file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr101/tree/master/etc/jupyterhub/templates). 
 
-I used the FileZilla SFTP Windows App to move the ```login.html``` file from my local computer to the server. To use FileZilla, Select [File] --> [Site Manager]. Select [SFTP], add the server IP address, username, and select [Log in Type] --> [Key File]. FileZilla settings are below:
+I used FileZilla, an SFTP Windows App, to move the ```login.html``` file from my local computer to the server. To use FileZilla, Select [File] --> [Site Manager]. Select [SFTP], add the server IP address, username, and select [Log in Type] --> [Key File]. FileZilla settings are below:
 
 ![FileZilla SFTP settings](images/fz_settings.png)
 
@@ -128,7 +130,9 @@ Therefore, we need to add some css styling to the page.
 
 Finally, the ```style.min.css``` file needs to be modified so that the login page styling looks a little more like our college login page.
 
-CSS another thing I messed around with for a long time, a WAY to long time... I couldn't figure out a way to get JupyterHub to use a custom .css file. I tried creating a .css file in the new custom templates directory, but JupyterHub wouldn't copy it as a static asset when the server launched. I also tried putting a separate .css file deep inside of the JupyterHub package code. When the server ran, it seemed to copy the custom .css file (I could see the custom .css file using chrome's inspect element tool). But for some reason the custom .css file would be blank when server serve was running, even though the custom .css file contained a whole bunch of css code when viewed deep in the JupyterHub package code.
+CSS another thing I messed around with for a long time, a WAY to long time... I couldn't figure out a way to get JupyterHub to use a custom .css file.
+
+I tried creating a .css file in the new custom templates directory, but JupyterHub wouldn't copy it as a static asset when the server launched. I also tried putting a separate .css file deep inside of the JupyterHub package code. When the server ran, it seemed to copy the custom .css file (I could see the custom .css file using chrome's inspect element tool). But for some reason the custom .css file would be blank when server serve was running, even though the custom .css file contained a whole bunch of css code when viewed deep in the JupyterHub package code.
 
 The solution I finally got to work was to modify the ```style.min.css``` file itself that JupyterHub uses. This file is buried deep in the JupyterHub package code:
 
@@ -159,10 +163,12 @@ Below is the look of the modified login page in all it's custom html and css glo
 
 ## Summary
 
-In this section, we created a custom login page that looks a lot like our college login page. First we copied over the jinja templates JupyterHub uses to build the login page into a separate directory. Then we modified one of the html code in one of the templates. We modified the JupyterHub configuration to use our custom templates. Finally we modified a special css file buried deep in the JuypyterHub package code. The end result is a JupyterHub login page that looks a lot like our college login page.
+In this section, we created a custom login page that looks a lot like our college login page.
+
+First we copied over the jinja templates JupyterHub uses to build the login page into a separate directory. Then we modified the html code in the ```login.html``` template. Next, we modified the JupyterHub configuration to use our custom template. Finally, we modified a special css file buried deep in the JuypyterHub package code. The end result is a JupyterHub login page that looks a lot like our college login page.
 
 ## Next Steps
 
-The next step is to add a set of notes and assignments to GitHub. We'll use these notes and assignments for the class. After we save the notes and assignments to GitHub, we will use a JupyterHub extension that pulls the assignments and notes down for each student (each JupyterHub user).
+The next step is to add a set of notes and assignments to GitHub. We'll use these notes and assignments for the class. After we save the notes and assignments to GitHub, we will use a JupyterHub extension to pull the assignments and notes down for each student (each JupyterHub user).
 
 <br>
