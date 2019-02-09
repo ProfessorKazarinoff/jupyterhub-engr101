@@ -1,4 +1,4 @@
-# Custom Login Page
+aa# Custom Login Page
 
 The JupyterHub login page looks like this:
 
@@ -16,7 +16,7 @@ For users to feel comfortable with logging into the JupyterHub server, we'll mak
 
 Customizing the login page was a time consuming and fussy task. It involved a lot of messing around with css and html plus some knowledge about how jinja templates work.
 
-First, a set of custom **jinja** templates need to be created. When JupyterHub runs, there is a directory of jinja templates that build the html users see when they browse to the login page. The jinga templates that build the login page are buried deep in the JupyterHub package code. For my JupyterHub installation on the server, I found the jinja template files in the ```/opt/miniconda3/envs/jupyterhubenv/share/jupyterhub/templates/``` directory. If you aren't using a virtual environment, the JupyterHub package directory name will likey be different:
+First, a set of custom **jinja** templates need to be created. When JupyterHub runs, there is a directory of jinja templates that build the html users see when they browse to the login page. The jinga templates that build the login page are buried deep in the JupyterHub package code. For my JupyterHub installation on the server, I found the jinja template files in the ```/opt/miniconda3/envs/jupyterhub/share/jupyterhub/templates/``` directory. If you aren't using a virtual environment, the JupyterHub package directory name will likely be different:
 
 ```text
 /opt/anaconda3/envs/pkgs/jupyterhub/share/jupyterhub/templates/
@@ -77,7 +77,7 @@ All the changes I made to the login template were inside the "login" block (```{
 {% endblock login %}
 ```
 
-You can find my complete ```login.html``` file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr114/blob/master/templates/login.html). 
+You can find my complete ```login.html``` file on GitHub [here](https://github.com/ProfessorKazarinoff/jupyterhub-engr101/blob/master/etc/jupyterhub/templates/login.html). 
 
 I used the FileZilla SFTP Windows App to move the ```login.html``` file from my local computer to the server. To use FileZilla, Select [File] --> [Site Manager]. Select [SFTP], add the server IP address, username, and select [Log in Type] --> [Key File]. FileZilla settings are below:
 
@@ -133,7 +133,7 @@ CSS another thing I messed around with for a long time, a WAY to long time... I 
 The solution I finally got to work was to modify the ```style.min.css``` file itself that JupyterHub uses. This file is buried deep in the JupyterHub package code:
 
 ```
-/opt/miniconda3/envs/jupyterhubenv/share/jupyterhub/static/css
+/opt/miniconda3/envs/jupyterhub/share/jupyterhub/static/css
 ├── style.min.css
 └── style.min.css.map
 ```
@@ -163,6 +163,6 @@ In this section, we created a custom login page that looks a lot like our colleg
 
 ## Next Steps
 
-The next step is to add Draw.IO to the possible "apps" that start in JupyterLab after a student logs into JupyterHub. Draw.IO installed in the JupyterLab interface makes it possible for student to draw flow charts in when they use JupyterHub
+The next step is to add a set of notes and assignments to GitHub. We'll use these notes and assignments for the class. After we save the notes and assignments to GitHub, we will use a JupyterHub extension that pulls the assignments and notes down for each student (each JupyterHub user).
 
 <br>
