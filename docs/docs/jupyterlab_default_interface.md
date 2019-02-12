@@ -6,7 +6,7 @@ Over the summer, when I ran JupterHub for the first time, we used the regular Ju
 
 ## JupyterLab Interface
 
-Below is the file browser in the regular Jupyter notebook interface. This is what students see now when they log into JupyterHub.
+Below is the file browser running the regular Jupyter notebook interface. This is what students see now when they log into JupyterHub.
 
 ![Jupyter Notebook File Browser](images/jupyter_notebook_file_browser.png)
 
@@ -45,7 +45,7 @@ If we switch to the JupyterLab interface, the same notebook looks like this:
 
 ## Modify jupyterhub_config.py
 
-To use JupyterLab as the default landing page (instead of the regular notebook interface), add a line to ```jupyterhub_config.py``` in the ```/etc/jupyterhub/``` directory
+To use JupyterLab as the default landing page (instead of the regular notebook interface), add a line to ```jupyterhub_config.py``` in the ```/etc/jupyterhub/``` directory.
 
 ```python
 # /etc/jupyterhub/jupyterhub_config.py
@@ -69,7 +69,7 @@ After ```jupyterhub_config.py``` is saved, let's restart JupyterHub and see the 
 $ sudo systemctl stop jupyterhub
 $ sudo systemctl start jupyterhub
 $ sudo systemctl status jupyterhub
-# ctrl-c to exit the status pannel
+# [Ctrl]+[c] to exit the status panel
 ```
 
 When we log into JupyterHub, we are greated by the JupyterLab interface:
@@ -78,7 +78,7 @@ When we log into JupyterHub, we are greated by the JupyterLab interface:
 
 ## Install JupyterLab extension for JupyterHub
 
-Once advantage of the good old classic notebook interface is it contains buttons to login and logout of JupyterHub, and buttons to start and stop our server. Login/logout and server start/stop controls are absent from the JupyterLab interface. Luckily, these controls can be added into JupyterLab with the [JupyterHub extension for JupyterLab](https://github.com/jupyterhub/jupyterlab-hub).
+One advantage of the good old classic notebook interface is it contains buttons to login and logout of JupyterHub, and buttons to start and stop our server. Login/logout and server start/stop controls are absent from the JupyterLab interface. Luckily, these controls can be added into JupyterLab with the [JupyterHub extension for JupyterLab](https://github.com/jupyterhub/jupyterlab-hub).
 
 To install the JupyterLab extension for JupyterHub, log 
 into the server, then activate the ```(jupyterhub)``` virtual environment. The extenion is installed with the command below:
@@ -109,11 +109,11 @@ c.Spawner.cmd = ['jupyter-labhub']
 
 After ```jupyterhub_config.py``` is saved, restart JupyterHub and see the results.
 
-```
+```text
 $ sudo systemctl stop jupyterhub
 $ sudo systemctl start jupyterhub
 $ sudo systemctl status jupyterhub
-# [ctrl]-[c] to exit the status pannel
+# [Ctrl]+[c] to exit the status panel
 ```
 
 When we log into JupyterHub, we see the JupyterLab interface with a new [Hub] menu along the top:
@@ -134,6 +134,6 @@ If we [Stop My Server], then re-[Start My Server], we end up back in the Jupyter
 
 The JupyterLab interface is the newest Jupyter notebook interface created by the Jupyter project team. The JupyterLab interface includes a file browser in the left-hand side and the option of splitting up a window to show multiple notebooks.
 
-Setting the JupyterLab interface as default is as simple as adding a custom url to the ```jupyterhub_config.py``` file. If JupyterLab is the default interface, it is also helpful to add the JupyterHub extension for the JupyterLab interface. This extension adds the [Stop Server] and [Start Server] buttons to JupyterLab under a [Hub] menu item.
+Setting the JupyterLab interface as default is as simple as adding a custom URL to the ```jupyterhub_config.py``` file. If JupyterLab is the default interface, it is also helpful to add the JupyterHub extension for the JupyterLab interface. This extension adds the [Stop Server] and [Start Server] buttons to JupyterLab under a [Hub] menu item.
 
 <br>

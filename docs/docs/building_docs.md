@@ -1,8 +1,8 @@
 # Building Docs
 
-The documentation for this JupyterHub deployment was completed using **mkdocs**, the **mkdocs-material** theme and deployed on GitHub pages.
+The documentation for this JupyterHub deployment was completed using [**mkdocs**](https://www.mkdocs.org/), the [**mkdocs-material**](https://squidfunk.github.io/mkdocs-material/) theme and deployed on GitHub pages.
 
-The directory structure of the GitHub repo that house the deployment files and docs looks like this:
+The directory structure of the GitHub repo that houses the deployment files and docs looks like this:
 
 ```text
 .
@@ -21,7 +21,7 @@ The directory structure of the GitHub repo that house the deployment files and d
 ```
 
 
-Inside the ```docs/``` directory is another ```docs/``` subdirectory with all of markdown files that make up the documentation. There is also a mkdocs yaml file in the ```docs``` directory. When calling mkdocs commands from the command line, you need to be in the folder with the ```mkdocs.yml``` file.
+Inside the ```docs/``` directory is another ```docs/``` subdirectory with all of markdown files that make up the documentation. There is also a mkdocs yaml file in the ```docs/``` directory. When calling ```mkdocs``` commands from the command line, you need to be in the folder with the ```mkdocs.yml``` file.
 
 ```text
 ./docs/
@@ -58,7 +58,7 @@ Inside the ```docs/``` directory is another ```docs/``` subdirectory with all of
     └── partials
 ```
 
-To build the docs locally, make sure you have Python installed (I use [Anaconda](https://anaconda.com/downloads)) start out by cloning the repo:
+To build the docs locally, make sure you have Python installed (I use [Anaconda](https://anaconda.com/downloads)). Start out by cloning the repo:
 
 ```text
 git clone https://github.com/ProfessorKazarinoff/jupyterhub-engr101.git

@@ -1,16 +1,16 @@
 # Draw.IO Extension
 
-In my ENGR114 class, students learn how to construct flow charts that describe the way a program runs. Students also use flowcharts to plan how a program will run. We can provide students access to a flow chart drawing program right in JupyterHub called [**Draw.IO**](https://www.draw.io/). Draw.IO will can added to our JuptyerHub deployment as a JupyterLab extension.
+In my ENGR114 class, students learn how to construct flow charts that describe the way a program runs. Students also use flowcharts to plan how a program will run. We can provide students access to a flow chart drawing program right in JupyterHub called [**Draw.IO**](https://www.draw.io/). Draw.IO can be added to our JuptyerHub deployment as a JupyterLab extension.
 
 [TOC]
 
 ## Install nodejs
 
-Ensure that nodejs is intalled in the ```(jupyterhub)``` virtual environment. Nodejs is needed to install the Draw.IO JupyterLab extension.
+Ensure that nodejs is installed in the ```(jupyterhub)``` virtual environment. Nodejs is needed to install the Draw.IO JupyterLab extension.
 
-```
+```text
 $ sudo systemctl stop jupyterhub
-$ conda activate jupyterhube
+$ conda activate jupyterhub
 (jupyterhub)$ conda install -c conda-forge nodejs
 ```
 
@@ -19,16 +19,16 @@ $ conda activate jupyterhube
 Type another conda install line to install the Draw.IO extension for
 JupyterLab.
 
-```
-(jupyterhubenv)$ jupyter labextension install jupyterlab-drawio
+```text
+(jupyterhub)$ jupyter labextension install jupyterlab-drawio
 ```
 
 ## Restart JupyterHub and test it out
 
-```
+```text
 $ sudo systemctl start jupyterhub
 $ sudo systemctl status jupyterhub
-[Ctrl]-[c] to exit
+[Ctrl]+[c] to exit
 ```
 
 Below are some screen captures of the Draw.io extension in action. Students need to click the [Diagram] icon in the JupyterLab [Launcher] window to open a new Draw.IO drawing.
