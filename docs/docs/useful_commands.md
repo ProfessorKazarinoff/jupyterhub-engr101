@@ -43,6 +43,14 @@ sudo systemctl <start|stop|status> jupyterhub
 $ export OAUTH_CLIENT_SECRET=xxxxxxxxxxx
 ```
 
+### Get the time and date from the command line
+
+```text
+$ date "+%H:%M:%S   %Y-%m-%d"
+
+17:36:58   2019-02-13
+```
+
 ### Gitpuller extension URLs
 
 ```text
