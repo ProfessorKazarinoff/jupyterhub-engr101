@@ -4,7 +4,7 @@
 import json
 
 # For Google OAuth
-from oauthenticator.google import LocalGoogleOAuthenticator   # $ pip install oauthenticator
+from oauthenticator.google import LocalGoogleOAuthenticator
 
 
 c = get_config()
@@ -34,32 +34,7 @@ c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '""', '--disabled-pa
 c.LocalGoogleOAuthenticator.hosted_domain = 'pcc.edu'   # replace with collegedomain.edu
 c.LocalGoogleOAuthenticator.login_service = 'Portland Community College'  # replace with 'College Name'
 
-## Extra Configuration
-
-# Maximum number of concurrent servers that can be active at a time
-c.JupyterHub.active_server_limit = 26
-
-# Maximum number of concurrent users that can be spawning at a time
-c.JupyterHub.concurrent_spawn_limit = 13
-
-# Whether to shutdown the proxy when the Hub shuts down.
-c.JupyterHub.cleanup_proxy = True
-
-# Whether to shutdown single-user servers when the Hub shuts down.
-c.JupyterHub.cleanup_servers = True
-
-# Cull Idle Servers
-# place cull_idle_servers.py in /srv/jupyterhub
-c.JupyterHub.services = [
-        {
-            'name': 'cull-idle',
-            'admin': True,
-            'command': 'python cull_idle_servers.py --timeout=3600'.split(),
-        }
-    ]
-
-
-## Users
+# Users
 #c.Authenticator.whitelist = {'peter','gabby'}
 c.Authenticator.admin_users = {'peter','peter.kazarinoff'}
 

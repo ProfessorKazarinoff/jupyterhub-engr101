@@ -368,3 +368,7 @@ jupyterhub-engr101-docs/site/
 
 /etc/jupyterhub/config.json
 /etc/jupyterhub/google_oauth_credentials.json
+
+## Because it's up on GitHub:
+# https://raw.githubusercontent.com/jupyterhub/jupyterhub-deploy-teaching/master/roles/cull_idle/files/cull_idle_servers.py
+/srv/jupyterhub/cull_idle_servers.py
