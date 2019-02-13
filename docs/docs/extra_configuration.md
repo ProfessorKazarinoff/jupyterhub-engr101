@@ -49,14 +49,25 @@ This script from the JupyterHub Examples repo looks like it might help:
 To get it to work, it looks like you need to add the following to ```jupyterhub_config.py```
 
 ```text
+# /etc/jupyterhub/jupyterhub_config.py
+
+import sys
+
+...
 c.JupyterHub.services = [
-    {
-        'name': 'cull-idle',
-        'admin': True,
-        'command': [sys.executable, 'cull_idle_servers.py', '--timeout=3600'],
-    }
-]
+        {
+            'name': 'cull-idle',
+            'admin': True,
+            'command': [sys.executable, '/etc/jupyterhub/cull_idle_servers.py', '--timeout=3600'],
+        }
+    ]
 ```
+
+#### Update
+
+put ```cull_idle_servers.py``` in ```/etc/jupyterhub/```. Make sure **dateutil** is intalled in the jupyterhub virtual env. Try ```>>> import dateutil  >>>dateutil.__version__``` Add ```import sys``` to the top of ```jupyterhub_config.py```. Restart JupyterHub. Check for errors.
+
+#### What I tried before is below and I don't think it worked
 
 I don't know if the ```cull_idle_servers.py``` script has to be placed somewhere, or if that script is already part of the JupyterHub package. It looks like according to this repo [jupyterhub-deploy-teaching](https://github.com/jupyterhub/jupyterhub-deploy-teaching), deep in the ```/roles/cull_idle/tasks/main.yml``` [(link)](https://github.com/jupyterhub/jupyterhub-deploy-teaching/blob/master/roles/cull_idle/tasks/main.yml), there is a line that copies the ```cull_idle.py``` file [(link)](https://github.com/jupyterhub/jupyterhub-deploy-teaching/blob/master/roles/cull_idle/files/cull_idle_servers.py) into the ```/svr/jupyterhub/``` directory.
 

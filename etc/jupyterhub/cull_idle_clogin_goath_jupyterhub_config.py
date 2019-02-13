@@ -51,7 +51,7 @@ c.JupyterHub.cleanup_proxy = True
 c.JupyterHub.cleanup_servers = True
 
 # Cull Idle Servers
-# place cull_idle_servers.py in /etc/jupyterhub/cull_idle_servers.py
+# place cull_idle_servers.py in /srv/jupyterhub
 c.JupyterHub.services = [
         {
             'name': 'cull-idle',
