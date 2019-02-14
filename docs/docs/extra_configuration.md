@@ -46,7 +46,7 @@ This script from the JupyterHub Examples repo looks like it might help:
 
  > [https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle](https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle)
  
-To get it to work, it looks like you need to add the following to ```jupyterhub_config.py```
+To get the ```cull_idle_servers.py``` script to run as a JupyterHub service, it looks like you need to add the following to ```jupyterhub_config.py```. (Based on [this page](https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle) in the JupyterHub docs)
 
 ```text
 # /etc/jupyterhub/jupyterhub_config.py
@@ -54,71 +54,41 @@ To get it to work, it looks like you need to add the following to ```jupyterhub_
 import sys
 
 ...
+# Cull Idle Servers
+# place cull_idle_servers.py in /etc/jupyterhub
 c.JupyterHub.services = [
         {
             'name': 'cull-idle',
             'admin': True,
-            'command': [sys.executable, '/etc/jupyterhub/cull_idle_servers.py', '--timeout=3600'],
+            'command': [sys.executable,
+                        '/etc/jupyterhub/cull_idle_servers.py',
+                        '--timeout=3000',
+                        '--url=http://127.0.0.1:8081/hub/api'
+                        ],
         }
     ]
 ```
 
-#### Update
-
-put ```cull_idle_servers.py``` in ```/etc/jupyterhub/```. Make sure **dateutil** is intalled in the jupyterhub virtual env. Try ```>>> import dateutil  >>>dateutil.__version__``` Add ```import sys``` to the top of ```jupyterhub_config.py```. Restart JupyterHub. Check for errors.
-
-#### What I tried before is below and I don't think it worked
-
-I don't know if the ```cull_idle_servers.py``` script has to be placed somewhere, or if that script is already part of the JupyterHub package. It looks like according to this repo [jupyterhub-deploy-teaching](https://github.com/jupyterhub/jupyterhub-deploy-teaching), deep in the ```/roles/cull_idle/tasks/main.yml``` [(link)](https://github.com/jupyterhub/jupyterhub-deploy-teaching/blob/master/roles/cull_idle/tasks/main.yml), there is a line that copies the ```cull_idle.py``` file [(link)](https://github.com/jupyterhub/jupyterhub-deploy-teaching/blob/master/roles/cull_idle/files/cull_idle_servers.py) into the ```/svr/jupyterhub/``` directory.
-
-```text
-# from https://github.com/jupyterhub/jupyterhub-deploy-teaching/blob/master/roles/cull_idle/tasks/main.yml
-
-- name: install cull_idle_servers dependencies
-  pip: name=python-dateutil state=present executable=pip
-
-- name: install cull_idle_servers.py into {{jupyterhub_srv_dir}}
-  copy: src=cull_idle_servers.py dest={{jupyterhub_srv_dir}} owner=root group=root mode=0700
-```
-
-So let's use FileZilla to copy the ```cull_idle.py``` script onto the server into the ```/srv/jupyterhub/``` directory. A problem I had was that FileZilla would not copy the file to ```/srv/jupyterhub``` because of what I think were permission issues. The way I got around it was to use FileZilla to copy the ```cull_idle_servers.py``` script into the user ```peter``` home directory, and then use the command line to ```cp``` the script into ```/srv/jupyterhub```. Then a couple commands were needed to modify the permissions of the script. I think these permission changes are needed to allow the script to be run by JupyterHub.
-
-```text
-$ ls
-$ sudo chown :sudo cull_idle_servers.py
-$ sudo chmod g+x cull_idle_servers.py
-$ sudo chmod u+x cull_idle_servers.py
-$ ls -la
-```
-
-It also looks like the Python package **python-dateutil** needs to be installed to run the ```cull_idle_servers.py``` script. We can see in the ```cull_idle_servers.py``` script there is an import for **python-dateutil**.
-
-```text
-# /srv/jupyterhub/cull_idle.py
-
-...
-import datetime
-import json
-import os
-
-from dateutil.parser import parse as parse_date
-...
-```
-
-The **python-dateutil** package can be installed with **conda**. Make sure to activate the ```(jupypterhub)``` virtual environment first.
+Put ```cull_idle_servers.py``` (found [here](https://github.com/jupyterhub/jupyterhub/blob/master/examples/cull-idle/cull_idle_servers.py)) in ```/etc/jupyterhub/```. Make sure **dateutil** is intalled in the jupyterhub virtual env. Try ```>>> import dateutil  >>> dateutil.__version__``` (using the ```(jupyterhub)``` virtual env. Make sure to add ```import sys``` to the top of ```jupyterhub_config.py```. Restart JupyterHub. Check for errors.
 
 ```text
 $ sudo systemctl stop jupyterhub
-$ sudo systemctl status jupyterhub
-# [Ctrl]+[c] to exit
-
-$ conda activate jupyterhub
-(jupyterhub)$ conda install python-dateutil
-(jupyterhub)$ conda deactivate
-
 $ sudo systemctl start jupyterhub
 $ sudo systemctl status jupyterhub
 # [Ctrl]+[c] to exit
+```
+
+If it seems like the ```cull_idle_servers.py``` script isn't working, try running ```cull_idle_servers.py``` from the command line to see if there are any errors. Make sure you are in the ```(jupyterhub)``` virtual environment when you run the script. The script will look for the ```JUPYTERHUB_API_TOKEN``` environment variable. An API token can be aquired by logging into JupyterHub (like a regular student) and clicking the [Token] menu from the home page that has the [Stop My Server] and [My Server] buttons. Click [Request new API token] and copy the API token. Then run the lines below (replace ```XXXX```` with your actual API token):
+
+```text
+$ export JUPYTERHUB_API_TOKEN='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+$ echo $JUPYTERHUB_API_TOKEN
+# API token is printed
+
+$ cd /etc/jupyterhub
+$ conda activate jupyterhub
+(jupyterhub)$ python cull_idle_servers.py --timeout=60 --url=http://127.0.0.1:8081/hub/api
+# check for errors
 ```
 
 ## Modify jupyterhub_config.py and upload to server
@@ -144,21 +114,24 @@ c.JupyterHub.cleanup_proxy = True
 c.JupyterHub.cleanup_servers = True
 
 # Cull Idle Servers
-# place cull_idle_servers.py in /srv/jupyterhub
+# place cull_idle_servers.py in /etc/jupyterhub
 c.JupyterHub.services = [
         {
             'name': 'cull-idle',
             'admin': True,
-            'command': 'python cull_idle_servers.py --timeout=3600'.split(),
+            'command': [sys.executable,
+                        '/etc/jupyterhub/cull_idle_servers.py',
+                        '--timeout=3000',
+                        '--url=http://127.0.0.1:8081/hub/api'
+                        ],
         }
     ]
-
 ...
 ```
 
 I made these changes in ```jupyterhub_config.py``` locally and then used FileZilla to upload the modified config file to the server.
 
-After the the modified ```jupyterhub_config.py``` file is added to the server, restart JupyterHub and make sure there are not any erros.
+After the modified ```jupyterhub_config.py``` file is uploaded to the server, restart JupyterHub and make sure there no errors.
 
 ```text
 $ sudo systemctl start jupyterhub
@@ -170,12 +143,12 @@ $ sudo systemctl status jupyterhub
 
 In this section we added a few extra configuration options to the ```jupyterhub_config.py``` file. A few extra configuration options we included were to limit the number of servers that can run at the same time and limit the amount of servers that can spawn at the same time.
 
-We also added a ```cull_idle_servers.py``` script to the server which will shut down idle servers if a student has not used them in a while. This involved copying the script to the users home directory, then copying it over to the ```/srv/jupyterhub/``` directory and modifying permissions. 
+We also added a ```cull_idle_servers.py``` script to the server which will shut down idle servers if a student has not used them in a while. This involved copying the script locally from GitHub, then uploading the script on the server in the ```/etc/jupyterhub/``` directory. The ```jupyterhub_config.py``` file has to be modified so that ```sys``` is imported and the ```cull_idle_servers.py``` script runs and a JupyterHub service
 
 Finally we uploaded the modified ```jupyterhubconfig.py``` configuration file and restarted JupyterHub.
 
 ## Additional Extras
 
-That's it for the main JupyterHub deployment. The next section is about periodic maintenance. After running JupyterHub for two quarters there are a couple lessons learned.
+That's it for the main JupyterHub deployment! The next section is about periodic maintenance. After running JupyterHub for two quarters there are a couple lessons learned server regarding maintenance.
 
 <br>

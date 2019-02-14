@@ -51,12 +51,16 @@ c.JupyterHub.cleanup_proxy = True
 c.JupyterHub.cleanup_servers = True
 
 # Cull Idle Servers
-# place cull_idle_servers.py in /srv/jupyterhub
+# place cull_idle_servers.py in /etc/jupyterhub
 c.JupyterHub.services = [
         {
             'name': 'cull-idle',
             'admin': True,
-            'command': [sys.executable, '/etc/jupyterhub/cull_idle_servers.py', '--timeout=3600'],
+            'command': [sys.executable,
+                        '/etc/jupyterhub/cull_idle_servers.py',
+                        '--timeout=3000',
+                        '--url=http://127.0.0.1:8081/hub/api'
+                        ],
         }
     ]
 
