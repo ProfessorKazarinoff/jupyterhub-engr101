@@ -121,7 +121,7 @@ Now move the json file over to the server and save it in the ```/etc/jupyterhub/
 
 Open FileZilla and select [File] --> [Site Manager... ]. Enter in the server's IP address and select the SSH key used to log into the server. Make sure to select:
 
- * [Protocal:] ```SFTP - SSH File Transfer Protocol```
+ * [Protocol:] ```SFTP - SSH File Transfer Protocol```
  * [Host:] ```IP address of server```
  * [Port]: ```22```
  * [Logon Type:] ```Key file```
