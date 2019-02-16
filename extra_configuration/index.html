@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/baseline-build-24px.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.3.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
     
     
       
@@ -40,9 +40,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.962652e9.js"></script>
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
     
     
       
@@ -125,22 +125,19 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
-              <span class="md-header-nav__topic">
-                JupyterHub-Deployment-ENGR101-2019Q1
-              </span>
-              <span class="md-header-nav__topic">
-                Extra Configuration
-              </span>
-            
+            <span class="md-header-nav__topic">
+              JupyterHub-Deployment-ENGR101-2019Q1
+            </span>
+            <span class="md-header-nav__topic">
+              Extra Configuration
+            </span>
           
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
@@ -163,7 +160,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -174,20 +170,18 @@
 
   
 
-
-  <a href="https://github.com/ProfessorKazarinoff/jupyterhub-engr101/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
+<a href="https://github.com/ProfessorKazarinoff/jupyterhub-engr101/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
           </div>
         </div>
       
@@ -223,20 +217,18 @@
 
   
 
-
-  <a href="https://github.com/ProfessorKazarinoff/jupyterhub-engr101/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
+<a href="https://github.com/ProfessorKazarinoff/jupyterhub-engr101/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -504,8 +496,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modify" title="Modify" class="md-nav__link">
-    Modify
+  <a href="#modify-jupyterhub_configpy-and-upload-to-server" title="Modify jupyterhub_config.py and upload to server" class="md-nav__link">
+    Modify jupyterhub_config.py and upload to server
   </a>
   
 </li>
@@ -666,8 +658,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modify" title="Modify" class="md-nav__link">
-    Modify
+  <a href="#modify-jupyterhub_configpy-and-upload-to-server" title="Modify jupyterhub_config.py and upload to server" class="md-nav__link">
+    Modify jupyterhub_config.py and upload to server
   </a>
   
 </li>
@@ -712,7 +704,7 @@
 <li><a href="#extra-configuration">Extra Configuration</a><ul>
 <li><a href="#configuration-options">Configuration Options</a></li>
 <li><a href="#cull-idle-servers">Cull Idle Servers</a></li>
-<li><a href="#modify">Modify</a></li>
+<li><a href="#modify-jupyterhub_configpy-and-upload-to-server">Modify jupyterhub_config.py and upload to server</a></li>
 <li><a href="#summary">Summary</a></li>
 <li><a href="#additional-extras">Additional Extras</a></li>
 </ul>
@@ -725,17 +717,17 @@
 <p><a href="https://jupyterhub.readthedocs.io/en/stable/api/app.html">https://jupyterhub.readthedocs.io/en/stable/api/app.html</a></p>
 </blockquote>
 <p>A couple configuration options in the list seem like good ideas:</p>
-<p>The class has 24 students, plus one instructor. In case I think 26 is a good number for the maximum that can use JupyterHub the same time. </p>
+<p>The class has 24 students, plus one instructor. Given that class size, I think 26 is a good number for the maximum that can use JupyterHub the same time. </p>
 <pre><code class="text">config c.JupyterHub.active_server_limit = Int(0)
 # Maximum number of concurrent servers that can be active at a time.
 </code></pre>
 
-<p>Having too many users log in all at the same time can overload the server. Let's set this as 13, so half of the class can log in at a time.</p>
+<p>Having too many users log in all at the same time can overload the server. Let's set this as 13, so half of the class can log in at the same time.</p>
 <pre><code class="text">config c.JupyterHub.concurrent_spawn_limit = Int(100)
 Maximum number of concurrent users that can be spawning at a time.
 </code></pre>
 
-<p>A couple settings relate to shutting down the hub and if user servers shut down too. I want it set so that if I shut down the hub all the user servers are shut down too.</p>
+<p>A couple settings relate to shutting down the hub and if user servers shut down too. I want it set so that if I shut down the hub, all the user servers are shut down too.</p>
 <pre><code class="text">config c.JupyterHub.cleanup_proxy = Bool(True)
 # Whether to shutdown the proxy when the Hub shuts down.
 </code></pre>
@@ -745,27 +737,99 @@ Maximum number of concurrent users that can be spawning at a time.
 </code></pre>
 
 <h2 id="cull-idle-servers">Cull Idle Servers</h2>
-<p>A problem with the first two JupyterHub deployments was that some students would not shut down their server when they were done working. Then twenty or so servers would all run all the time. This script from the JupyterHub Examples repo looks like it might help:</p>
+<p>A problem with the first two JupyterHub deployments was that some students would not shut down their server when they were done working. Then twenty or so servers would all keep running all the time. </p>
+<p>This script from the JupyterHub Examples repo looks like it might help:</p>
 <blockquote>
 <p><a href="https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle">https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle</a></p>
 </blockquote>
-<p>To get it to work, it looks like you need to add the following to <code>jupyterhub_config.py</code></p>
-<pre><code class="text">c.JupyterHub.services = [
-    {
-        'name': 'cull-idle',
-        'admin': True,
-        'command': [sys.executable, 'cull_idle_servers.py', '--timeout=3600'],
-    }
-]
+<p>To get the <code>cull_idle_servers.py</code> script to run as a JupyterHub service, it looks like you need to add the following to <code>jupyterhub_config.py</code>. (Based on <a href="https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle">this page</a> in the JupyterHub docs)</p>
+<pre><code class="text"># /etc/jupyterhub/jupyterhub_config.py
+
+import sys
+
+...
+# Cull Idle Servers
+# place cull_idle_servers.py in /etc/jupyterhub
+c.JupyterHub.services = [
+        {
+            'name': 'cull-idle',
+            'admin': True,
+            'command': [sys.executable,
+                        '/etc/jupyterhub/cull_idle_servers.py',
+                        '--timeout=3000',
+                        '--url=http://127.0.0.1:8081/hub/api'
+                        ],
+        }
+    ]
 </code></pre>
 
-<p>I don't know if the <code>cull_idle_servers.py</code> script has to be placed somewhere, or if that script is already part of the JupyterHub package. Maybe sticking it in the same directory as the <code>jupyterhub_config.py</code> file is how to do it? </p>
-<h2 id="modify">Modify</h2>
+<p>Put <code>cull_idle_servers.py</code> (found <a href="https://github.com/jupyterhub/jupyterhub/blob/master/examples/cull-idle/cull_idle_servers.py">here</a>) in <code>/etc/jupyterhub/</code>. Make sure <strong>dateutil</strong> is intalled in the jupyterhub virtual env. Try <code>&gt;&gt;&gt; import dateutil  &gt;&gt;&gt; dateutil.__version__</code> (using the <code>(jupyterhub)</code> virtual env. Make sure to add <code>import sys</code> to the top of <code>jupyterhub_config.py</code>. Restart JupyterHub. Check for errors.</p>
+<pre><code class="text">$ sudo systemctl stop jupyterhub
+$ sudo systemctl start jupyterhub
+$ sudo systemctl status jupyterhub
+# [Ctrl]+[c] to exit
+</code></pre>
+
+<p>If it seems like the <code>cull_idle_servers.py</code> script isn't working, try running <code>cull_idle_servers.py</code> from the command line to see if there are any errors. Make sure you are in the <code>(jupyterhub)</code> virtual environment when you run the script. The script will look for the <code>JUPYTERHUB_API_TOKEN</code> environment variable. An API token can be aquired by logging into JupyterHub (like a regular student) and clicking the [Token] menu from the home page that has the [Stop My Server] and [My Server] buttons. Click [Request new API token] and copy the API token. Then run the lines below (replace ```XXXX```` with your actual API token):</p>
+<pre><code class="text">$ export JUPYTERHUB_API_TOKEN='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+$ echo $JUPYTERHUB_API_TOKEN
+# API token is printed
+
+$ cd /etc/jupyterhub
+$ conda activate jupyterhub
+(jupyterhub)$ python cull_idle_servers.py --timeout=60 --url=http://127.0.0.1:8081/hub/api
+# check for errors
+</code></pre>
+
+<h2 id="modify-jupyterhub_configpy-and-upload-to-server">Modify jupyterhub_config.py and upload to server</h2>
+<p>The additions made to <code>jupyterhub_config.py</code> are shown below:</p>
+<pre><code class="text"># /etc/jupyterhub/jupyterhub_config.py
+
+...
+## Extra Configuration
+
+# Maximum number of concurrent servers that can be active at a time
+c.JupyterHub.active_server_limit = 26
+
+# Maximum number of concurrent users that can be spawning at a time
+c.JupyterHub.concurrent_spawn_limit = 13
+
+# Whether to shutdown the proxy when the Hub shuts down.
+c.JupyterHub.cleanup_proxy = True
+
+# Whether to shutdown single-user servers when the Hub shuts down.
+c.JupyterHub.cleanup_servers = True
+
+# Cull Idle Servers
+# place cull_idle_servers.py in /etc/jupyterhub
+c.JupyterHub.services = [
+        {
+            'name': 'cull-idle',
+            'admin': True,
+            'command': [sys.executable,
+                        '/etc/jupyterhub/cull_idle_servers.py',
+                        '--timeout=3000',
+                        '--url=http://127.0.0.1:8081/hub/api'
+                        ],
+        }
+    ]
+...
+</code></pre>
+
+<p>I made these changes in <code>jupyterhub_config.py</code> locally and then used FileZilla to upload the modified config file to the server.</p>
+<p>After the modified <code>jupyterhub_config.py</code> file is uploaded to the server, restart JupyterHub and make sure there no errors.</p>
+<pre><code class="text">$ sudo systemctl start jupyterhub
+$ sudo systemctl status jupyterhub
+# [Ctrl]+[c] to exit
+</code></pre>
+
 <h2 id="summary">Summary</h2>
-<p>In this section we installed the nbgitpuller plugin for JupyterHub. Then we created a custom URL. When we browse to the custom URL, we enter our JupyterHub environment with all the files contained on GitHub placed in our user directory. </p>
-<p>This is a great plugin to have with JupyterHub. Now when we make changes to the Labs or Assignments in the GitHub Repo, those changes are reflected when students log into JupyterHub with the special URL.</p>
+<p>In this section we added a few extra configuration options to the <code>jupyterhub_config.py</code> file. A few extra configuration options we included were to limit the number of servers that can run at the same time and limit the amount of servers that can spawn at the same time.</p>
+<p>We also added a <code>cull_idle_servers.py</code> script to the server which will shut down idle servers if a student has not used them in a while. This involved copying the script locally from GitHub, then uploading the script on the server in the <code>/etc/jupyterhub/</code> directory. The <code>jupyterhub_config.py</code> file has to be modified so that <code>sys</code> is imported and the <code>cull_idle_servers.py</code> script runs and a JupyterHub service</p>
+<p>Finally we uploaded the modified <code>jupyterhubconfig.py</code> configuration file and restarted JupyterHub.</p>
 <h2 id="additional-extras">Additional Extras</h2>
-<p>That's it for the main JupyterHub deployment. The next section is about periodic maintenance. After running JupyterHub for two quarters there are a couple lessons learned.</p>
+<p>That's it for the main JupyterHub deployment! The next section is about periodic maintenance. After running JupyterHub for two quarters there are a couple lessons learned server regarding maintenance.</p>
+<p><br></p>
                 
                   
                 
@@ -833,15 +897,13 @@ Maximum number of concurrent users that can be spawning at a time.
           Material for MkDocs</a>
       </div>
       
-        
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../assets/javascripts/application.a353778b.js"></script>
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
