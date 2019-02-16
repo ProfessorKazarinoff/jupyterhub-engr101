@@ -31,15 +31,15 @@ This documentation builds upon the experience from my two previous JupyterHub de
 ## Main Steps
 
 * Install PuTTY, generate SSH keys
-* Create server
+* Create server, non-root sudo user
 * Install JupyterHub and Python packages
 * Aquire and link domain name to server
 * Aquire SSL cirt
 * Create Cooke Secret, Proxy Auth Token, and dhparam.pem
 * Install and configure Nginx
 * Configure JupyterHub
-* GitHub Authentication
+* JupyterHub as system service
 * Google Authentication
-* Set JupyterLab as default interface
 * Create custom login page
 * Pull assignments down from GitHub for each user
+* Extra configuration
