@@ -41,7 +41,7 @@ There are a number of choices to make. These are the ones I selected:
  * Size: 1 GB Memory 25GB SSD $5/month
  * Datacenter: San Fransisco 2
  * Add your SSH keys: New SSH Key
- * Finalize: 1 Droplet, Hostname: jupyterhub-engr114
+ * Finalize: 1 Droplet, Hostname: jupyterhub-ENGR101-2019Q1
 
 ![Digital Droplet Choose an Image](images/do_choose_an_image.png)
 
