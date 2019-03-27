@@ -1,4 +1,4 @@
-    # /etc/nginx/sites-available/jupyterhub
+   # /etc/nginx/sites-available/jupyterhub
 
     # All regular http requests on port 80 become SSL/HTTPS requests on port 32
     server {
