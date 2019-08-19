@@ -14,7 +14,7 @@ To obtain the Google OAuth credentials, we need to log into the Google API conso
 
 ![Google oauth credentials](images/google_oauth_credentials.png)
 
-Next we'll create a new OAuth credential under [Credentials] --> [Create Credentials] --> [OAuth client ID]:
+Next, we'll create a new OAuth credential under [Credentials] --> [Create Credentials] --> [OAuth client ID]:
 
 ![Google create credentials](images/google_oauth_create_credentials.png)
 
@@ -35,7 +35,7 @@ So click the [authorized domains list] link and enter the domain name for the Ju
 
 ![Google OAuth add scope](images/google_oauth_add_scope.png)
 
-Then click [Submit for verification] and [Save]. For some reason the authorize domains submit for verification step and save step took a couple tries and more than a couple minutes. I don't know if Google is going a DNS lookup or what kind of verification steps they do - either way it took some time for the domain to be "verified".
+Then click [Submit for verification] and [Save]. For some reason the authorize domains submit for verification step and save step took a couple tries and more than a couple minutes. I don't know if Google is doing a DNS lookup or what kind of verification steps they do - either way it took some time for the domain to be "verified".
 
 ![Google OAuth submit for verification](images/google_oauth_submit_for_verification.png)
 
